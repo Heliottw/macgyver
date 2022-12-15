@@ -1,25 +1,29 @@
-import McGyver.Constructions.ElectroAimant;
-import McGyver.Plan.ElectroAimantPlan;
+import McGyver.Constructions.Construction;
 import McGyver.MacGyver;
+import McGyver.Plan.ElectroAimantPlan;
 import McGyver.Salle.Perruque;
 import McGyver.Salle.TelephoneFilaire;
 import McGyver.Salle.Voiture;
 import McGyver.Transformable;
 
-import java.util.List;
+import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        List<Transformable> objetsPiece = List.of(new TelephoneFilaire(),new Voiture(), new Perruque());
+        //Objets pieces valide pour la recette de l'aimant
+        Transformable[] objetsPiece = {new TelephoneFilaire(),new Voiture(), new Perruque()};
+
+        //Objets pieces non valide pour la recette de l'aimant
+        //Transformable[] objetsPiece1 = {new TelephoneFilaire(),new Voiture(), new Perruque()};
+
         ElectroAimantPlan electroAimantPlan = new ElectroAimantPlan();
         MacGyver macGyver = new MacGyver();
-        macGyver.equiperSaPerruque(new Perruque());
 
+        macGyver.equiperSaPerruque(new Perruque());
         macGyver.recolterEtTransformer(objetsPiece);
 
-        ElectroAimant electroAimant = (ElectroAimant) macGyver.utiliserUnPlanDeConstruction(electroAimantPlan);
-
-        electroAimant.utiliser();
+        Optional.ofNullable(macGyver.fabriquerUnObjetAvecPlan(electroAimantPlan))
+                .ifPresent(Construction::utiliser);
 
     }
 }
