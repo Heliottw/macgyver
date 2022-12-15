@@ -3,10 +3,12 @@ package McGyver.Plan;
 import McGyver.Constructions.Construction;
 import McGyver.Matiere.MatierePremiere;
 
+import java.util.List;
 import java.util.Map;
 
-public interface Plan {
+public abstract class Plan {
+    public Map<MatierePremiere, Integer> recette;
+    public List<Runnable> etapes;
 
-    Map<MatierePremiere, Integer> supprimerMatieresPremieresUtilisees(Map<MatierePremiere, Integer> inventaire);
-    Construction build(Map<MatierePremiere,Integer> inventaire);
+    public abstract Construction obtenirConstruction();
 }
