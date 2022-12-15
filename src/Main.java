@@ -14,7 +14,7 @@ public class Main {
         Transformable[] objetsPiece = {new TelephoneFilaire(),new Voiture(), new Perruque()};
 
         //Objets pieces non valide pour la recette de l'aimant
-        //Transformable[] objetsPiece1 = {new TelephoneFilaire(),new Voiture(), new Perruque()};
+        //Transformable[] objetsPiece1 = {new TelephoneFilaire(), new Perruque()};
 
         ElectroAimantPlan electroAimantPlan = new ElectroAimantPlan();
         MacGyver macGyver = new MacGyver();
